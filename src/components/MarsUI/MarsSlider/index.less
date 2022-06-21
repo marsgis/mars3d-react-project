@@ -1,0 +1,44 @@
+.mars-slider.ant-slider {
+  margin: 0px 10px 6px 6px;
+  .ant-slider-mark-text {
+    color: @mars-base-color !important;
+    top: 5px;
+  }
+  /*滑动条 未选择、已选择部分 高度*/
+  .ant-slider-rail {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #284660 !important;
+  }
+  .ant-slider-track {
+    height: 10px;
+    border-radius: 5px;
+    background-color: @mars-primary-color !important;
+  }
+  /*滑动条 刻度点*/
+  .ant-slider-dot {
+    background-color: #16212c7d;
+    top: 12px;
+    height: 6px;
+    width: 1px;
+    border-radius: 0 0;
+    border: none;
+    background-color: #fff;
+  }
+  .ant-slider-dot:first-child {
+    margin-left: 2px;
+  }
+
+  /*滑动条 拖拽点*/
+  .ant-slider-handle {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin-top: -3px;
+    border: 4px solid @mars-primary-color;
+  }
+  .ant-slider-dot-active,
+  .ant-slider-handle {
+    border-color: @mars-primary-color !important;
+  }
+}

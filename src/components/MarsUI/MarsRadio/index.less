@@ -1,0 +1,27 @@
+.mars-radio {
+  color: @mars-base-color;
+
+  .ant-radio-inner {
+    background-color: @mars-bg-base;
+    border-color: @mars-base-border-color;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  .ant-radio-checked {
+    .ant-radio-inner {
+      border-color: @mars-primary-color;
+    }
+  }
+
+  .ant-radio-input {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+.mars-radio-group {
+  .ant-radio-wrapper {
+    .mars-radio();
+  }
+}

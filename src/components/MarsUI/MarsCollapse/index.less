@@ -1,0 +1,36 @@
+// collapse 折叠面板相关样式
+.mars-collapse.ant-collapse {
+  // collapse 折叠面板相关样式
+  &,
+  .ant-collapse-item,
+  .ant-collapse-content {
+    background: none !important;
+    border: none;
+  }
+
+  .ant-collapse-content-box {
+    padding: 5px 5px 10px 5px;
+  }
+
+  .ant-collapse-header {
+    background-image: url(../assets/images/tab-title.png);
+    margin-bottom: 10px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 5px 15px !important;
+    color: #fff !important;
+  }
+
+  .ant-collapse-content {
+    color: @mars-base-color !important;
+  }
+
+  .ant-collapse-extra {
+    .mars-icon {
+      font-size: 16px;
+      line-height: 16px;
+      vertical-align: middle;
+    }
+  }
+}

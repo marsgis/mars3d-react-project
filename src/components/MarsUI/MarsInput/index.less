@@ -1,0 +1,27 @@
+.mars-input,
+.mars-textarea,
+.mars-input-password,
+.mars-input-search {
+  &.ant-input,&.ant-input-affix-wrapper {
+    color: @mars-base-color;
+    background-color: transparent !important;
+    font-size: 12px !important;
+    .ant-input-suffix .anticon {
+      color: @mars-base-color;
+    }
+  }
+  .ant-input {
+    background-color: transparent !important;
+    border-color: @mars-base-border-color;
+    color: @mars-base-color;
+  }
+}
+.mars-input.ant-input[disabled] {
+  color: @mars-disable-btn-bg;
+}
+.mars-input-color.ant-input {
+  background-color: @form-input-background;
+  padding: 0;
+  width: 80px;
+  border: none;
+}
