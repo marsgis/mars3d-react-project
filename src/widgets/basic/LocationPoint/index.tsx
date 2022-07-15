@@ -224,7 +224,7 @@ class LocationPoint extends Component<any, any> {
 
   // 界面二
   changeGk(data) {
-    this.state.marsGuiRef.current.updateField(
+    this.state.marsGuiRef.current?.updateField(
       "lng",
       mapWork.marsDms2degree(
         mapWork.marsUtilFormtNum(data.lngDMS[0], 6),
@@ -232,7 +232,7 @@ class LocationPoint extends Component<any, any> {
         mapWork.marsUtilFormtNum(data.lngDMS[2], 6)
       )
     )
-    this.state.marsGuiRef.current.updateField(
+    this.state.marsGuiRef.current?.updateField(
       "lat",
       mapWork.marsDms2degree(
         mapWork.marsUtilFormtNum(data.latDMS[0], 6),
@@ -240,7 +240,7 @@ class LocationPoint extends Component<any, any> {
         mapWork.marsUtilFormtNum(data.latDMS[2], 6)
       )
     )
-    this.state.marsGuiRef.current.updateField("alt", data.altDMS)
+    this.state.marsGuiRef.current?.updateField("alt", data.altDMS)
 
     this.marsProj4Trans(data)
   }
@@ -253,18 +253,18 @@ class LocationPoint extends Component<any, any> {
 
   // 更新度分秒
   marsUpdataPosition(data) {
-    this.state.marsGuiRef.current.updateField("lng", mapWork.marsUtilFormtNum(data.lng, 6))
-    this.state.marsGuiRef.current.updateField("lat", mapWork.marsUtilFormtNum(data.lat, 6))
-    this.state.marsGuiRef.current.updateField("alt", mapWork.marsUtilFormtNum(data.alt, 6))
+    this.state.marsGuiRef.current?.updateField("lng", mapWork.marsUtilFormtNum(data.lng, 6))
+    this.state.marsGuiRef.current?.updateField("lat", mapWork.marsUtilFormtNum(data.lat, 6))
+    this.state.marsGuiRef.current?.updateField("alt", mapWork.marsUtilFormtNum(data.alt, 6))
   }
 
   // 平面坐标转经纬度并更新
   marsZONEtoCRS(data) {
     const zone = mapWork.marsZONEtoCRS(Number(data.gk6X), Number(data.gk6Y), data.radioFendai)
 
-    this.state.marsGuiRef.current.updateField("lng", mapWork.marsUtilFormtNum(zone[0], 6))
-    this.state.marsGuiRef.current.updateField("lat", mapWork.marsUtilFormtNum(zone[1], 6))
-    this.state.marsGuiRef.current.updateField("alt", data.gkAlt)
+    this.state.marsGuiRef.current?.updateField("lng", mapWork.marsUtilFormtNum(zone[0], 6))
+    this.state.marsGuiRef.current?.updateField("lat", mapWork.marsUtilFormtNum(zone[1], 6))
+    this.state.marsGuiRef.current?.updateField("alt", data.gkAlt)
   }
 
   // 十进制转2000平面三分度六分度
@@ -278,11 +278,11 @@ class LocationPoint extends Component<any, any> {
     const zone = mapWork.marsProj4Trans(
       mapWork.marsUtilFormtNum(data.lng, 6),
       mapWork.marsUtilFormtNum(data.lat, 6),
-      this.state.marsGuiRef.current.getValue("radioFendai")
+      this.state.marsGuiRef.current?.getValue("radioFendai")
     )
-    this.state.marsGuiRef.current.updateField("gk6X", mapWork.marsUtilFormtNum(zone[0], 1))
-    this.state.marsGuiRef.current.updateField("gk6Y", mapWork.marsUtilFormtNum(zone[1], 1))
-    this.state.marsGuiRef.current.updateField("gkAlt", mapWork.marsUtilFormtNum(data.alt, 6))
+    this.state.marsGuiRef.current?.updateField("gk6X", mapWork.marsUtilFormtNum(zone[0], 1))
+    this.state.marsGuiRef.current?.updateField("gk6Y", mapWork.marsUtilFormtNum(zone[1], 1))
+    this.state.marsGuiRef.current?.updateField("gkAlt", mapWork.marsUtilFormtNum(data.alt, 6))
   }
 
   // 经纬度转度分秒并更新
@@ -290,14 +290,14 @@ class LocationPoint extends Component<any, any> {
     const lngDMS = [mapWork.marsPointTrans(data.lng).degree, mapWork.marsPointTrans(data.lng).minute, mapWork.marsPointTrans(data.lng).second]
     const latDMS = [mapWork.marsPointTrans(data.lat).degree, mapWork.marsPointTrans(data.lat).minute, mapWork.marsPointTrans(data.lat).second]
 
-    this.state.marsGuiRef.current.updateField("lngDMS", lngDMS)
-    this.state.marsGuiRef.current.updateField("latDMS", latDMS)
-    this.state.marsGuiRef.current.updateField("altDMS", mapWork.marsUtilFormtNum(data.alt, 6))
+    this.state.marsGuiRef.current?.updateField("lngDMS", lngDMS)
+    this.state.marsGuiRef.current?.updateField("latDMS", latDMS)
+    this.state.marsGuiRef.current?.updateField("altDMS", mapWork.marsUtilFormtNum(data.alt, 6))
   }
 
   // 坐标定位
   submitCenter() {
-    const data = this.state.marsGuiRef.current.getValues()
+    const data = this.state.marsGuiRef.current?.getValues()
     mapWork.updateMarker(true, data.lng, data.lat, data.alt)
   }
 

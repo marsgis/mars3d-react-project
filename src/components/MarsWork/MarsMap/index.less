@@ -143,6 +143,15 @@
 .mars3d-popup-background {
   background: @mars-bg-base;
 }
+.mars3d-popup-content {
+  margin: 15px;
+}
+.mars3d-popup-btn-custom {
+  padding: 3px 10px;
+  border: 1px solid #209ffd;
+  background: #209ffd1c;
+}
+
 .mars3d-tooltip {
   background: @mars-bg-base;
   border: 1px solid @mars-bg-base;
@@ -160,21 +169,36 @@
   border-right-color: @mars-bg-base;
 }
 
-.mars3d-popup-content {
-  margin: 15px;
-}
-.mars3d-template-content label {
-  padding-right: 6px;
-}
-.mars3d-template-titile {
-  border-bottom: 1px solid @mars-hover-btn-bg;
-}
-.mars3d-template-titile a {
-  font-size: 16px;
-}
 
-.mars3d-popup-btn-custom {
-  padding: 3px 10px;
-  border: 1px solid #209ffd;
-  background: #209ffd1c;
+
+/* all 中的html样式 */
+.mars3d-template-titile {
+  color: @mars-base-color;
+  border-bottom: 1px solid @mars-hover-btn-bg;
+  a {
+    font-size: 16px;
+  }
+}
+.mars3d-template-content {
+  label {
+    padding-right: 6px;
+  }
+
+  input {
+    color: @mars-base-color;
+    background-color: transparent !important;
+    padding: 4px 5px;
+  }
+  input::placeholder {
+    color: #cdcdcd !important;
+  }
+
+  textarea {
+    color: @mars-base-color;
+    background-color: transparent !important;
+    padding: 4px 5px;
+  }
+  textarea::placeholder {
+    color: #cdcdcd !important;
+  }
 }

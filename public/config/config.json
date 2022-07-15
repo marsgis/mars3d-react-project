@@ -416,7 +416,7 @@
         "popupNoTitle": true,
         "onWidget": "layer-picture-guihua"
       },
-      { "id": 30, "name": "矢量数据", "type": "group" }, 
+      { "id": 30, "name": "矢量数据", "type": "group" },
       { "id": 3030, "pid": 30, "name": "GeoJSON数据", "type": "group" },
       {
         "id": 303011,
@@ -831,21 +831,38 @@
       { "id": 2010, "pid": 20, "name": "gltf模型", "type": "group" },
       {
         "pid": 2010,
-        "type": "gltf",
+        "type": "graphic",
         "name": "风力发电机",
-        "url": "{dataServer}/gltf/mars/fengche.gltf",
-        "position": { "lng": 117.219071, "lat": 31.828783, "alt": 39.87 },
-        "style": { "scale": 50, "heading": -93 },
+        "data": [
+          {
+            "type": "modelP",
+            "position": [117.219071, 31.828783, 39.87],
+            "style": {
+              "url": "//data.mars3d.cn/gltf/mars/fengche.gltf",
+              "scale": 50,
+              "heading": -93
+            }
+          }
+        ],
         "popup": "示例信息，这是一个风力发电机",
         "center": { "lat": 31.821083, "lng": 117.21832, "alt": 832.64, "heading": 2.3, "pitch": -39.2 }
       },
       {
         "pid": 2010,
-        "type": "gltf",
+        "type": "graphic",
         "name": "起重车",
-        "url": "{dataServer}/gltf/mars/qzcar/GKZY_anim.gltf",
-        "position": { "lng": 117.217458, "lat": 31.815349, "alt": 35.03 },
-        "style": { "scale": 2, "heading": -95, "clampToGround": true },
+        "data": [
+          {
+            "type": "modelP",
+            "position": [117.217458, 31.815349, 35.03],
+            "style": {
+              "url": "//data.mars3d.cn/gltf/mars/qzcar/GKZY_anim.gltf",
+              "scale": 2,
+              "heading": -95,
+              "clampToGround": true
+            }
+          }
+        ],
         "center": { "lat": 31.815363, "lng": 117.215958, "alt": 107.35, "heading": 90.7, "pitch": -26.1 }
       },
       { "id": 2040, "pid": 20, "name": "城市白模", "type": "group" },
@@ -917,6 +934,7 @@
             ]
           }
         },
+        "hasOpacity": false,
         "center": { "lat": 31.504746, "lng": 118.264278, "alt": 580, "heading": 29, "pitch": -49 }
       },
       { "id": 2060, "pid": 20, "name": "BIM模型", "type": "group" },
@@ -1006,11 +1024,18 @@
       },
       {
         "pid": 202030,
-        "type": "gltf",
         "name": "闸门",
-        "url": "{dataServer}/gltf/mars/zhamen.glb",
-        "position": { "lng": 121.479813, "lat": 29.791278, "alt": 16 },
-        "style": { "heading": 105 },
+        "type": "graphic",
+        "data": [
+          {
+            "type": "modelP",
+            "position": [121.479813, 29.791278, 16],
+            "style": {
+              "url": "//data.mars3d.cn/gltf/mars/zhamen.glb",
+              "heading": 105
+            }
+          }
+        ],
         "center": { "lat": 29.791607, "lng": 121.479925, "alt": 27, "heading": 198, "pitch": -18 }
       },
       {
@@ -1064,6 +1089,7 @@
         "maximumScreenSpaceError": 1,
         "maximumMemoryUsage": 1024,
         "center": { "lat": 34.215516, "lng": 108.960251, "alt": 834, "heading": 4, "pitch": -48 },
+        "flat":{},
         "flyTo": false,
         "show": false
       },

@@ -10,6 +10,8 @@ interface MainViewProps {
 const configUrl = `${process.env.BASE_URL}config/config.json`
 
 function MainView(props: MainViewProps) {
+  console.log("MainView")
+
   const [loaded, setLoaded] = useState(false)
 
   const marsOnload = useCallback((map: Map) => {

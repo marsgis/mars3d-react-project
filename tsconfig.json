@@ -19,6 +19,7 @@
     "esModuleInterop": false,
     "isolatedModules": true,
     "baseUrl": ".",
+    "outDir": "./dist",
     "types": ["vite/client", "node"],
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "paths": {

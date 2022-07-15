@@ -15,6 +15,7 @@ interface MarsMapProps {
 function MarsMap(props: MarsMapProps) {
   // 使用用户传入的 mapKey 拼接生成 withKeyId 作为当前显示容器的id
   const withKeyId = `mars3d-container-${props.mapKey}`
+  console.log("MarsMap")
 
   // 用于存放地球组件实例
   let map: mars3d.Map // 地图对象
