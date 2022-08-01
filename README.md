@@ -5,17 +5,19 @@
 <p align="center">基于React技术栈的 Mars3D🌎基础项目系统</p>
 
 <p align="center">
-<a target="_black" href="https://github.com/marsgis/mars3d">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars3d?style=flat&logo=github">
-</a>
-<a target="_black" href="https://www.npmjs.com/package/mars3d">
-<img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars3d?style=flat&logo=npm">
-</a>
-<a target="_black" href="https://www.npmjs.com/package/mars3d">
-<img alt="Npm version" src="https://img.shields.io/npm/v/mars3d.svg?style=flat&logo=npm&label=version"/>
-</a>
+  <a target="_black" href="https://www.npmjs.com/package/mars3d">
+    <img alt="Npm version" src="https://img.shields.io/npm/v/mars3d.svg?style=flat&logo=npm&label=版本号" />
+  </a>
+  <a target="_black" href="https://www.npmjs.com/package/mars3d">
+    <img alt="Npm downloads" src="https://img.shields.io/npm/dt/mars3d?style=flat&logo=npm&label=下载量" />
+  </a>
+  <a target="_black" href="https://github.com/marsgis/mars3d">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/marsgis/mars3d?style=flat&logo=github" />
+  </a>
+  <a target="_black" href="https://gitee.com/marsgis/mars3d">
+    <img src="https://gitee.com/marsgis/mars3d/badge/star.svg?theme=dark" alt="star" />
+  </a>
 </p>
-
 ## 项目介绍
 
 Mars3D 基础项目 是基于[Mars3D 平台](http://mars3d.cn)做的一个应用系统，提供的一个基础项目模版，包含常用基础地图功能，可在该基础项目上快速开发搭建新项目。方便快速搭建三维地图产品，敏捷开发，可复用，支持各种配置，适合各种场景使用。

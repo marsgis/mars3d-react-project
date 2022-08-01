@@ -51,7 +51,7 @@ export default function (props) {
                   items={item.children.map((child) => ({
                     key: child.widget,
                     label: (
-                      <div onClick={() => showWidget(child.widget)}>
+                      <div title={child.title || child.name} onClick={() => showWidget(child.widget)}>
                         <MarsIcon className={styles["toolbar-icon"]} icon={child.icon} width="18"></MarsIcon>
                         <span>{child.name}</span>
                       </div>
@@ -60,7 +60,7 @@ export default function (props) {
                 ></MarsMenu>
               }
             >
-              <div className={styles["toolbar-item"]}>
+              <div className={styles["toolbar-item"]} >
                 <MarsIcon className={styles["toolbar-icon"]} icon={item.icon} width="18"></MarsIcon>
                 <span className="title">{item.name}</span>
                 <MarsIcon icon="down" width="18"></MarsIcon>
