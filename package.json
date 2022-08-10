@@ -28,7 +28,6 @@
     "mars3d-echarts": "^3.4.0",
     "mars3d-heatmap": "^3.4.0",
     "mars3d-mapv": "^3.4.0",
-    "mars3d-cesium": "^1.95.1",
     "nprogress": "^0.2.0",
     "react": "^18.1.0",
     "react-color": "^2.19.3",
