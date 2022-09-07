@@ -303,7 +303,7 @@ class LocationPoint extends Component<any, any> {
 
   render() {
     return (
-      <MarsDialog title="坐标拾取" handles="false" right={10} top={60} width={356} height={316} {...this.props}>
+      <MarsDialog title="坐标拾取" handles="false" right={10} top={60} width={356} {...this.props}>
         <div className={styles.selectPoint}>
           <MarsGui ref={this.state.marsGuiRef} options={this.state.options} formProps={{ labelCol: { span: 4 } }}></MarsGui>
         </div>
