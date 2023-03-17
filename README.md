@@ -523,6 +523,7 @@ define: {
 再在`src/main.js`文件中加载和初始化相关依赖。
 
 ```js
+import "mars3d-cesium/Build/Cesium/Widgets/widgets.css"
 import "mars3d/dist/mars3d.css"
 import "@mars/assets/style/index.less"
 

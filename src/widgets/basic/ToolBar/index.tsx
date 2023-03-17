@@ -46,21 +46,19 @@ export default function (props) {
             <MarsDropdown
               trigger={["hover"]}
               placement="bottomRight"
-              overlay={
-                <MarsMenu
-                  items={item.children.map((child) => ({
-                    key: child.widget,
-                    label: (
-                      <div title={child.title || child.name} onClick={() => showWidget(child.widget)}>
-                        <MarsIcon className={styles["toolbar-icon"]} icon={child.icon} width="18"></MarsIcon>
-                        <span>{child.name}</span>
-                      </div>
-                    )
-                  }))}
-                ></MarsMenu>
-              }
+              menu={{
+                items: item.children.map((child) => ({
+                  key: child.widget,
+                  label: (
+                    <div title={child.title || child.name} onClick={() => showWidget(child.widget)}>
+                      <MarsIcon className={styles["toolbar-icon"]} icon={child.icon} width="18"></MarsIcon>
+                      <span>{child.name}</span>
+                    </div>
+                  )
+                }))
+              }}
             >
-              <div className={styles["toolbar-item"]} >
+              <div className={styles["toolbar-item"]}>
                 <MarsIcon className={styles["toolbar-icon"]} icon={item.icon} width="18"></MarsIcon>
                 <span className="title">{item.name}</span>
                 <MarsIcon icon="down" width="18"></MarsIcon>

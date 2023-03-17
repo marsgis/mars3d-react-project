@@ -1,5 +1,5 @@
 import { MarsPannel, MarsIcon, MarsInput, MarsButton, MarsPagination, $showLoading, $hideLoading, $message, $alert } from "@mars/components/MarsUI"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import { isLonLat } from "@mars/utils/mars-util"
 import * as mapWork from "./map"
 import { useLifecycle } from "@mars/common/uses/useLifecycle"
@@ -17,6 +17,12 @@ export default function (props) {
   const [siteSource, setSiteSource] = useState([])
   const [searchListShow, setSearchListShow] = useState(false)
   const [siteListShow, setSiteListShow] = useState(false)
+
+  useEffect(() => {
+    if (searchTxt === "") {
+      setSearchListShow(false)
+    }
+  })
 
   let timer = useRef<any>()
 

@@ -149,6 +149,12 @@ export default function (props) {
           lastWidget.current = layer.options.onWidget
         } else {
           disable(layer.options.onWidget)
+          // 防止在取消勾选时(将map变为null)，导致再次勾选时没有map无法调用方法
+          setTimeout(() => {
+            activate({
+              name: layer.options.onWidget
+            })
+          }, 100)
         }
       }
 
@@ -160,7 +166,7 @@ export default function (props) {
         layer.show = true
         layer.readyPromise &&
           layer.readyPromise.then(function (layer) {
-            layer.flyTo()
+            layer.flyTo({ scale: 2 })
           })
       } else {
         layer.show = false

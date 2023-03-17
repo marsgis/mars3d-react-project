@@ -2,8 +2,7 @@ import type { ConfigEnv } from "vite"
 import { defineConfig, loadEnv } from "vite"
 import react from "@vitejs/plugin-react"
 import path from "path"
-import eslintPlugin from "vite-plugin-eslint"
-import mars3dCesium from "vite-plugin-mars3d"
+import { vitePluginMars3d } from "vite-plugin-mars3d"
 import { createStyleImportPlugin, AntdResolve } from "vite-plugin-style-import"
 import autoprefixer from "autoprefixer"
 
@@ -79,7 +78,7 @@ export default ({ mode }: ConfigEnv) => {
       // 当设置为 true, 构建后将会生成 manifest.json 文件
       manifest: false,
       // 设置为 false 可以禁用最小化混淆,或是用来指定是应用哪种混淆器 boolean | 'terser' | 'esbuild'
-      minify: "terser",
+      minify: true,
       // 传递给 Terser 的更多 minify 选项
       terserOptions: {},
       // 设置为false 来禁用将构建好的文件写入磁盘
@@ -88,7 +87,8 @@ export default ({ mode }: ConfigEnv) => {
       emptyOutDir: true
     },
     plugins: [
-      mars3dCesium(),
+      react(),
+      vitePluginMars3d(),
       createStyleImportPlugin({
         resolves: [AntdResolve()],
         libs: [
@@ -103,13 +103,13 @@ export default ({ mode }: ConfigEnv) => {
       })
     ]
   }
-  if (ISDEV) {
-    config.plugins.push(react() as any)
-    config.plugins.push(eslintPlugin({ cache: false }) as any)
-  } else {
-    config.esbuild = {
-      jsxInject: 'import React from "react";'
-    }
-  }
+  // if (ISDEV) {
+  //   config.plugins.push(react() as any)
+  //   config.plugins.push(eslintPlugin({ cache: false }) as any)
+  // } else {
+  //   config.esbuild = {
+  //     jsxInject: 'import React from "react";'
+  //   }
+  // }
   return defineConfig(config as any)
 }
