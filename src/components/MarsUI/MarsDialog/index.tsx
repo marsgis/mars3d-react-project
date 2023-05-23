@@ -16,6 +16,8 @@ interface Props {
   warpper?: string // 容器id 默认是app，将作为定位的参照元素，一般不需要修改
   title?: string // 弹框标题
   visible?: boolean // 是否显示
+  show?: boolean // 是否默认显示
+
   width?: number | string // 初始宽度
   height?: number | string // 初始高度
 
@@ -174,12 +176,12 @@ const DialogElement = forwardRef<any, Props>(
     )
 
     useEffect(() => {
-      if (props.visible) {
+      if (props.visible && (props.show ?? true)) {
         pannelBox.current.style.display = "block"
       } else {
         pannelBox.current.style.display = "none"
       }
-    }, [props.visible])
+    }, [props.visible, props.show])
 
     const close = useCallback(() => {
       pannelBox.current.style.display = "none"
