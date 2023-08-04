@@ -30,11 +30,15 @@ export function withLifeCyle(WrappedComponent: any, mapWork) {
         mapWork.onMounted(window._mapInstance)
         mapWork.onMounted._load = true
       }
+      if (mapWork.onUnmounted) {
+        mapWork.onUnmounted._load = false
+      }
     }
 
     componentWillUnmount() {
-      if (mapWork.onUnmounted) {
+      if (mapWork.onUnmounted && !mapWork.onUnmounted._load) {
         mapWork.onUnmounted()
+        mapWork.onUnmounted._load = true
       }
       if (mapWork.onMounted) {
         mapWork.onMounted._load = false
