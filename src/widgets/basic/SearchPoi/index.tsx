@@ -5,6 +5,10 @@ import * as mapWork from "./map"
 import { useLifecycle } from "@mars/common/uses/useLifecycle"
 import styles from "./index.module.less"
 
+import { createPortal } from "react-dom"
+import { renderToString } from "react-dom/server"
+import QueryPopup from "./QueryPopup"
+
 const storageName = "mars3d_queryGaodePOI"
 const url = "//www.amap.com/detail/"
 
@@ -18,10 +22,33 @@ export default function (props) {
   const [searchListShow, setSearchListShow] = useState(false)
   const [siteListShow, setSiteListShow] = useState(false)
 
+  const [popupContainer, setPopupContainer] = useState(null)
+  const [attr, setattr] = useState(null)
+
   useEffect(() => {
     if (searchTxt === "") {
       setSearchListShow(false)
     }
+
+    // 绑定popup
+    mapWork.graphicLayer.bindPopup(
+      (event) => {
+        const attr = event.graphic.attr || {}
+        if (!attr) {
+          return
+        }
+
+        // 方法一 使用 createPortal
+        const domNode = document.querySelector("#" + event.id)
+        setPopupContainer(domNode)
+        setattr(attr)
+
+        // 方法二 使用 renderToString 返回一个html元素
+        // const html = renderToString(<QueryPopup attr={attr} />)
+        // return html
+      },
+      { template: false }
+    )
   })
 
   let timer = useRef<any>()
@@ -135,73 +162,77 @@ export default function (props) {
   }
 
   return (
-    <MarsPannel left={10} top={10} customClass={styles["query-poi-pannel"]} {...props}>
-      <div className={styles["query-poi"]}>
-        <div className={styles["query-poi__search"]}>
-          <MarsInput
-            placeholder="搜索 地点"
-            value={searchTxt}
-            className={styles["search-input"]}
-            onBlur={startCloseSearch}
-            onFocus={showHistoryList}
-            allowClear
-            onChange={(e) => {
-              setSiteListShow(false)
-              setSearchTxt(e.target.value)
-              handleSearch(e.target.value)
-            }}
-          ></MarsInput>
-          <MarsButton className={styles["search-button"]}>
-            <MarsIcon icon="search" width="20" color="#fff" onClick={() => selectPoint(searchTxt)}></MarsIcon>
-          </MarsButton>
-        </div>
-
-        {searchListShow && (
-          <ul className={styles["search-list"]}>
-            {dataSource.map((item, i) => (
-              <li key={i} className={styles["search-list__item"]} onClick={() => selectPoint(item.value)}>
-                {item.value}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {siteListShow && (
-          <div className={styles["query-site"]}>
-            {siteSource && siteSource.length && (
-              <>
-                <ul>
-                  {siteSource.map((item, i) => (
-                    <li key={i} className={styles["query-site__item"]} onClick={() => flyTo(item)}>
-                      <div className={styles["query-site__context"]}>
-                        <p className={`${styles["query-site-text"]} f-toe`} title={item.name}>
-                          <span className={styles["query-site-text_num"]}>{i + 1}</span>
-                          {item.name}
-                        </p>
-                        <p className={`${styles["query-site-sub"]} f-toe`}>{item.type}</p>
-                      </div>
-                      <a href={url + item.id} rel="noreferrer" target="_blank" className={styles["query-site__more"]}>
-                        <MarsIcon icon="double-right" width="20"></MarsIcon>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <div className={styles["query-site__page"]}>
-                  <p className={styles["query-site-allcount"]}>共{allCount}条结果</p>
-
-                  <MarsPagination
-                    onChange={(page: number) => querySiteList(searchTxt, page)}
-                    size="small"
-                    total={allCount}
-                    pageSize={6}
-                    simple={true}
-                  />
-                </div>
-              </>
-            )}
+    <>
+      <MarsPannel left={10} top={10} customClass={styles["query-poi-pannel"]} {...props}>
+        <div className={styles["query-poi"]}>
+          <div className={styles["query-poi__search"]}>
+            <MarsInput
+              placeholder="搜索 地点"
+              value={searchTxt}
+              className={styles["search-input"]}
+              onBlur={startCloseSearch}
+              onFocus={showHistoryList}
+              allowClear
+              onChange={(e) => {
+                setSiteListShow(false)
+                setSearchTxt(e.target.value)
+                handleSearch(e.target.value)
+              }}
+            ></MarsInput>
+            <MarsButton className={styles["search-button"]}>
+              <MarsIcon icon="search" width="20" color="#fff" onClick={() => selectPoint(searchTxt)}></MarsIcon>
+            </MarsButton>
           </div>
-        )}
-      </div>
-    </MarsPannel>
+
+          {searchListShow && (
+            <ul className={styles["search-list"]}>
+              {dataSource.map((item, i) => (
+                <li key={i} className={styles["search-list__item"]} onClick={() => selectPoint(item.value)}>
+                  {item.value}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {siteListShow && (
+            <div className={styles["query-site"]}>
+              {siteSource && siteSource.length && (
+                <>
+                  <ul>
+                    {siteSource.map((item, i) => (
+                      <li key={i} className={styles["query-site__item"]} onClick={() => flyTo(item)}>
+                        <div className={styles["query-site__context"]}>
+                          <p className={`${styles["query-site-text"]} f-toe`} title={item.name}>
+                            <span className={styles["query-site-text_num"]}>{i + 1}</span>
+                            {item.name}
+                          </p>
+                          <p className={`${styles["query-site-sub"]} f-toe`}>{item.type}</p>
+                        </div>
+                        <a href={url + item.id} rel="noreferrer" target="_blank" className={styles["query-site__more"]}>
+                          <MarsIcon icon="double-right" width="20"></MarsIcon>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className={styles["query-site__page"]}>
+                    <p className={styles["query-site-allcount"]}>共{allCount}条结果</p>
+
+                    <MarsPagination
+                      onChange={(page: number) => querySiteList(searchTxt, page)}
+                      size="small"
+                      total={allCount}
+                      pageSize={6}
+                      simple={true}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </MarsPannel>
+
+      {popupContainer !== null && createPortal(<QueryPopup attr={attr}></QueryPopup>, popupContainer)}
+    </>
   )
 }
