@@ -5,6 +5,8 @@
  * @author 木遥 2022-01-01
  */
 import { toKml } from "kml-geojson"
+import { flushSync } from "react-dom"
+import { createRoot } from "react-dom/client"
 import _ from "lodash"
 
 export function saveJSON(data: any[]) {
@@ -33,7 +35,7 @@ export function saveJSON(data: any[]) {
 export function readJSON<T>(file: any): Promise<T> {
   return new Promise((resolve) => {
     console.log(file)
-    
+
     const fileName = file.name
     const fileType = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length).toLowerCase()
     if (fileType !== "json") {
@@ -62,4 +64,20 @@ export function saveGeoJSON2Kml(geojson: string, options: any): any {
     ...options
   })
   return kml
+}
+
+/**
+ * react 组件示例化为Popup的DOM
+ *
+ * @param {*} comp 传入的 react 组件
+ * @return {*}  HTMLElement
+ */
+export function initReactPopup(comp) {
+  const vNodeDom = document.createElement("div")
+  const vNode = createRoot(vNodeDom)
+  flushSync(() => {
+    vNode.render(comp)
+  })
+
+  return vNodeDom
 }

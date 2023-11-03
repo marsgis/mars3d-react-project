@@ -5,8 +5,7 @@ import * as mapWork from "./map"
 import { useLifecycle } from "@mars/common/uses/useLifecycle"
 import styles from "./index.module.less"
 
-import { createPortal } from "react-dom"
-import { renderToString } from "react-dom/server"
+import { initReactPopup } from "@mars/utils/file-util"
 import QueryPopup from "./QueryPopup"
 
 const storageName = "mars3d_queryGaodePOI"
@@ -22,9 +21,6 @@ export default function (props) {
   const [searchListShow, setSearchListShow] = useState(false)
   const [siteListShow, setSiteListShow] = useState(false)
 
-  const [popupContainer, setPopupContainer] = useState(null)
-  const [attr, setattr] = useState(null)
-
   useEffect(() => {
     if (searchTxt === "") {
       setSearchListShow(false)
@@ -38,14 +34,8 @@ export default function (props) {
           return
         }
 
-        // 方法一 使用 createPortal
-        const domNode = document.querySelector("#" + event.id)
-        setPopupContainer(domNode)
-        setattr(attr)
-
-        // 方法二 使用 renderToString 返回一个html元素
-        // const html = renderToString(<QueryPopup attr={attr} />)
-        // return html
+        const dom = initReactPopup(<QueryPopup attr={attr}></QueryPopup>)
+        return dom
       },
       { template: false }
     )
@@ -231,8 +221,6 @@ export default function (props) {
           )}
         </div>
       </MarsPannel>
-
-      {popupContainer !== null && createPortal(<QueryPopup attr={attr}></QueryPopup>, popupContainer)}
     </>
   )
 }
