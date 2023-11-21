@@ -28,7 +28,10 @@ html {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color:rgba(23, 49, 71, 0.8) !important
+  background-color: rgba(23, 49, 71, 0.8) !important ;
+  * {
+    box-sizing: border-box; // 使padding 不影响盒子的宽高；
+  }
 }
 
 #root {

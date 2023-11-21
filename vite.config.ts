@@ -3,11 +3,11 @@ import { defineConfig, loadEnv } from "vite"
 import react from "@vitejs/plugin-react"
 import path from "path"
 import { mars3dPlugin } from "vite-plugin-mars3d"
-import { createStyleImportPlugin, AntdResolve } from "vite-plugin-style-import"
 import autoprefixer from "autoprefixer"
 
 export default ({ mode }: ConfigEnv) => {
   const root = process.cwd()
+  // 获取 .env 文件里定义的环境变量
   const ENV = loadEnv(mode, root)
 
   console.log(`当前环境信息：`, mode)
@@ -24,7 +24,7 @@ export default ({ mode }: ConfigEnv) => {
     },
     define: {
       "process.env": {
-        mode: mode,
+        mode,
         BASE_URL: ENV.VITE_BASE_URL
       }
     },
@@ -34,9 +34,9 @@ export default ({ mode }: ConfigEnv) => {
       },
       extensions: [".js", ".ts", ".jsx", ".tsx", ".json"]
     },
-    optimizeDeps: {
-      include: ["mars3d"]
-    },
+    // optimizeDeps: {
+    //   include: ["mars3d"]
+    // },
     json: {
       // 支持从 .json 文件中进行按名导入
       namedExports: true,
@@ -86,22 +86,7 @@ export default ({ mode }: ConfigEnv) => {
       // 默认情况下 若 outDir 在 root 目录下， 则 Vite 会在构建时清空该目录。
       emptyOutDir: true
     },
-    plugins: [
-      react(),
-      mars3dPlugin(),
-      createStyleImportPlugin({
-        resolves: [AntdResolve()],
-        libs: [
-          {
-            libraryName: "antd",
-            esModule: true,
-            resolveStyle: (name) => {
-              return `antd/es/${name}/style/index`
-            }
-          }
-        ]
-      })
-    ]
+    plugins: [react(), mars3dPlugin()]
   }
   // if (ISDEV) {
   //   config.plugins.push(react() as any)

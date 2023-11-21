@@ -6,6 +6,15 @@
     border-color: @mars-primary-color !important;
   }
 
+  :deep(.ant-picker-input) {
+    > input {
+      color: var(--mars-base-color) !important;
+      &::placeholder {
+        color: var(--mars-base-color) !important;
+      }
+    }
+  }
+
   .ant-picker-input {
     input {
       color: @mars-base-color !important;
