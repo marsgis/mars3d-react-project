@@ -50,9 +50,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "http-server": "^14.1.1",
     "less": "^4.2.0",
-    "terser": "^5.24.0",
-    "typescript": "5.2.2",
-    "vite": "^4.5.0",
+    "terser": "^5.25.0",
+    "typescript": "~5.2.2",
+    "vite": "^5.0.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-mars3d": "^3.1.3"
   },
