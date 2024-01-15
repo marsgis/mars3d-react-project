@@ -14,6 +14,7 @@
 @mars-bg-base: rgba(23, 49, 71, 0.8);
 @mars-base-border-color: #d9d9d9;
 @mars-list-active: linear-gradient(90deg, rgba(0, 138, 255, 0) 0%, rgba(0, 138, 255, 0.58) 53%, rgba(0, 138, 255, 0.02) 100%);
+@mars-msg-title-color: #c7d3dd;
 
 @mars-ordinary-color: rgba(32, 160, 255, 0.2); // 普通颜色
 @mars-background-active: #000000d9; // 全局激活背景色
@@ -31,11 +32,13 @@
 @button-background-active: #20a0ff33; // 按钮激活背景颜色
 @collapse-header-color: #202a4480; // 折叠面板头部颜色
 
+
 // 提示组件背景
 .mars-msg-bg {
   background-image: url(./assets/images/border-image-base.png);
   background-size: 100% 100%;
 }
+
 // 提示组件标题样式
 .mars-msg-title {
   background-image: url(./assets/images/msg-title-bg.png);
@@ -44,6 +47,7 @@
   font-size: 18px;
   color: #0089fe;
 }
+
 // 下拉样式
 .mars-drop-bg {
   background-color: @mars-bg-base !important;
@@ -69,10 +73,12 @@
   .ant-radio-button-checked {
     background-color: #1890ff;
   }
+
   //进度条
   .ant-progress-text {
     color: @mars-base-border !important;
   }
+
   // 表格滑动条
   .ant-table-cell-scrollbar {
     display: none;
@@ -103,10 +109,12 @@
 
 .mars-primary-table {
   width: 100%;
+
   td {
     border: 1px solid @border-color-base;
     padding: 2px;
   }
+
   tr td:nth-of-type(1) {
     width: 100px;
   }

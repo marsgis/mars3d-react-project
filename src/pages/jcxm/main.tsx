@@ -2,6 +2,9 @@ import "mars3d-cesium/Build/Cesium/Widgets/widgets.css"
 import "mars3d/dist/mars3d.css"
 import "@mars/assets/style/index.less"
 
+import "font-awesome/css/font-awesome.css"
+
+
 import { createRoot } from "react-dom/client"
 import MainView from "@mars/components/MarsWork/MainView"
 import { generateWidgetView } from "@mars/common/store/widget"

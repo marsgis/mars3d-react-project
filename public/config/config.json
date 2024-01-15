@@ -66,7 +66,8 @@
     },
     "terrain": {
       "url": "//data.mars3d.cn/terrain",
-      "show": true
+      "show": true,
+      "clip": true
     },
     "basemaps": [
       { "id": 10, "name": "地图底图", "type": "group" },
@@ -1077,7 +1078,7 @@
         "center": { "lat": 34.215516, "lng": 108.960251, "alt": 834, "heading": 4, "pitch": -48 },
         "flat": {
           "enabled": true,
-          "editHeight": 420
+          "editHeight": -24
         },
         "flyTo": false,
         "show": false
@@ -1086,6 +1087,7 @@
         "pid": 2030,
         "name": "校园(含单体)",
         "type": "group",
+        "hasOpacity":true,
         "center": { "lat": 43.821193, "lng": 125.143124, "alt": 990, "heading": 342, "pitch": -50 },
         "layers": [
           {

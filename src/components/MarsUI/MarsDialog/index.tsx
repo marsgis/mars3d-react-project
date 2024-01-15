@@ -215,7 +215,7 @@ const DialogElement = forwardRef<any, Props>(
         <div className="mars-dialog__header" onMouseDown={drag}>
           <span className="icon">{icon && icon}</span>
           <span className="title"> {props.title} </span>
-          <MarsIcon icon="close" width="18" color="#41A8FF" className="close-btn" onClick={close}></MarsIcon>
+          <MarsIcon icon="close" width="18" color="#ffffff" className="close-btn" onClick={close}></MarsIcon>
         </div>
         <div className={`mars-dialog__body ${props.footer ? "" : "full-content"}`}>
           <div className="content">{props.children}</div>

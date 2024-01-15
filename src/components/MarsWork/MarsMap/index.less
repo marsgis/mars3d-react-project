@@ -5,10 +5,12 @@
   left: 12px !important;
   right: auto !important;
 }
+
 .cesium-toolbar-button img {
   height: 100%;
 }
-.cesium-viewer-toolbar > .cesium-toolbar-button,
+
+.cesium-viewer-toolbar>.cesium-toolbar-button,
 .cesium-navigationHelpButton-wrapper,
 .cesium-viewer-geocoderContainer {
   margin-bottom: 5px;
@@ -16,6 +18,7 @@
   clear: both;
   text-align: center;
 }
+
 .cesium-button {
   background-color: @mars-bg-base;
   color: #e6e6e6;
@@ -23,6 +26,7 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   line-height: 32px;
 }
+
 .cesium-button:hover {
   background: @mars-hover-btn-bg;
 }
@@ -44,12 +48,15 @@
   transform-origin: left bottom;
   background: none;
   background-color: @mars-bg-base;
+
   .cesium-navigation-help-instructions {
     background: none;
   }
+
   .cesium-navigation-button {
     background: none;
   }
+
   .cesium-navigation-button-selected,
   .cesium-navigation-button-unselected:hover {
     background: @mars-select-bg;
@@ -60,6 +67,7 @@
 .cesium-sceneModePicker-wrapper {
   width: auto;
 }
+
 .cesium-sceneModePicker-wrapper .cesium-sceneModePicker-dropDown-icon {
   float: right;
   margin: 0 3px;
@@ -72,15 +80,19 @@
   width: auto;
   z-index: 9999;
 }
+
 .cesium-geocoder-searchButton {
   background-color: @mars-bg-base;
 }
+
 .cesium-viewer-geocoderContainer .cesium-geocoder-input {
   background-color: rgba(63, 72, 84, 0.7);
 }
+
 .cesium-viewer-geocoderContainer .cesium-geocoder-input:focus {
   background-color: rgba(63, 72, 84, 0.9);
 }
+
 .cesium-viewer-geocoderContainer .search-results {
   background-color: @mars-bg-base;
 }
@@ -90,6 +102,7 @@
   top: 50px;
   background-color: @mars-bg-base;
 }
+
 .cesium-infoBox-title {
   background-color: @mars-bg-base;
 }
@@ -100,6 +113,7 @@
   bottom: 35px;
   right: 50px;
 }
+
 .cesium-performanceDisplay-ms,
 .cesium-performanceDisplay-fps {
   color: #fff;
@@ -111,6 +125,7 @@
   left: 10px;
   right: auto;
 }
+
 .cesium-cesiumInspector {
   background-color: @mars-bg-base;
 }
@@ -119,19 +134,20 @@
 .mars3d-compass .mars3d-compass-outer {
   fill: @mars-bg-base;
 }
+
 .mars3d-contextmenu-ul,
 .mars3d-sub-menu {
   background-color: @mars-bg-base;
 
-  > li > a:hover,
-  > li > a:focus,
-  > li > .active {
+  >li>a:hover,
+  >li>a:focus,
+  >li>.active {
     background-color: @mars-hover-btn-bg;
   }
 
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
+  >.active>a,
+  >.active>a:hover,
+  >.active>a:focus {
     background-color: @mars-hover-btn-bg;
   }
 }
@@ -140,31 +156,39 @@
 .mars3d-popup-color {
   color: @mars-base-color;
 }
+
 .mars3d-popup-background {
   background: @mars-bg-base;
 }
+
 .mars3d-popup-content {
   margin: 15px;
 }
+
 .mars3d-popup-btn-custom {
   padding: 3px 10px;
   border: 1px solid #209ffd;
   background: #209ffd1c;
+  color: #fff;
 }
 
 .mars3d-tooltip {
   background: @mars-bg-base;
   border: 1px solid @mars-bg-base;
 }
+
 .mars3d-tooltip-top:before {
   border-top-color: @mars-bg-base;
 }
+
 .mars3d-tooltip-bottom:before {
   border-bottom-color: @mars-bg-base;
 }
+
 .mars3d-tooltip-left:before {
   border-left-color: @mars-bg-base;
 }
+
 .mars3d-tooltip-right:before {
   border-right-color: @mars-bg-base;
 }
@@ -175,10 +199,16 @@
 .mars3d-template-titile {
   color: @mars-base-color;
   border-bottom: 1px solid @mars-hover-btn-bg;
+  padding-bottom: 5px;
+
   a {
     font-size: 16px;
+    color: @mars-msg-title-color;
+    padding: 0 20px 0 0;
   }
 }
+
+
 .mars3d-template-content {
   label {
     padding-right: 6px;
@@ -188,7 +218,9 @@
     color: @mars-base-color;
     background-color: transparent !important;
     padding: 4px 5px;
+    outline: none;
   }
+
   input::placeholder {
     color: #cdcdcd !important;
   }
@@ -197,7 +229,9 @@
     color: @mars-base-color;
     background-color: transparent !important;
     padding: 4px 5px;
+    outline: none;
   }
+
   textarea::placeholder {
     color: #cdcdcd !important;
   }
