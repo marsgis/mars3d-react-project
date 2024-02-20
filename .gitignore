@@ -11,6 +11,7 @@
 /node_modules
 public/lib/CesiumUnminified/
 packages/mars3d/dist/plugins/
+packages/mars3d/node_modules/
 mars3d-*src.*
 
 
@@ -29,6 +30,13 @@ speed-measure-plugin*.json
 .settings/
 *.sublime-workspace
 
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # misc
 /.sass-cache
@@ -45,4 +53,5 @@ testem.log
 Thumbs.db
 package-lock.json
 
-# 测试
+# 本地测试
+src/example/a-test
