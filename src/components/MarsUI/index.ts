@@ -25,8 +25,8 @@ export * from "./MarsCollapse"
 export * from "./MarsTable"
 export * from "./MarsDrowdown"
 export * from "./MarsPagination"
-export * from "./MarsTopMenu"
-export * from "./MarsSteps"
+// export * from "./MarsTopMenu"
+// export * from "./MarsSteps"
 
 export const $alert = MarsAlert
 export const $notify = MarsNotify
