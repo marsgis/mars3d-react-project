@@ -15,7 +15,7 @@
   "type": "module",
   "dependencies": {
     "@icon-park/svg": "^1.4.2",
-    "@turf/turf": "^6.5.0",
+    "@turf/turf": "^7.1.0",
     "antd": "^5.14.1",
     "axios": "^1.6.7",
     "classnames": "^2.5.1",
