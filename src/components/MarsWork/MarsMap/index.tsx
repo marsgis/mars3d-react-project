@@ -1,5 +1,8 @@
 import { useEffect } from "react"
+
 import * as mars3d from "mars3d"
+import "./expand/index" // 引入插件或注册扩展js
+
 import { $alert, $message } from "@mars/components/MarsUI"
 import { getQueryString } from "@mars/utils/mars-util"
 import { getDefaultContextMenu } from "@mars/utils/getDefaultContextMenu"
