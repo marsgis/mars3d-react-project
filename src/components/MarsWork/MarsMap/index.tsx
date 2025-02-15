@@ -24,13 +24,7 @@ function MarsMap(props: MarsMapProps) {
   let map: mars3d.Map // 地图对象
 
   useEffect(() => {
-    mars3d.Util.fetchJson({ url: props.url }).then((data: any) => {
-      initMars3d({
-        // 合并配置项
-        ...data.map3d,
-        ...props.options
-      })
-    })
+    initMars3d()
 
     return () => {
       if (map) {
@@ -40,8 +34,32 @@ function MarsMap(props: MarsMapProps) {
     }
   }, [])
 
-  const initMars3d = (option: any) => {
-    map = new mars3d.Map(withKeyId, option)
+  const initMars3d = async () => {
+    // 获取配置
+    let mapOptions
+    if (props.url) {
+      // 存在url时才读取
+      mapOptions = await mars3d.Util.fetchJson({ url: props.url })
+    }
+
+    if (props.options) {
+      // 存在叠加的属性时
+      let exOptions
+      if (props.options.then) {
+        exOptions = await props.options
+      } else {
+        exOptions = props.options
+      }
+
+      if (mapOptions) {
+        mapOptions = mars3d.Util.merge(mapOptions, exOptions) // 合并配置
+      } else {
+        mapOptions = exOptions
+      }
+    }
+    // logInfo("地图构造参数", mapOptions)
+
+    map = new mars3d.Map(withKeyId, mapOptions)
 
     // 绑定当前项目的默认右键菜单
     map.bindContextMenu(getDefaultContextMenu(map))

@@ -131,3 +131,37 @@ export function isPc() {
   }
   return flag
 }
+
+
+// @ts-ignore 需要开启时请F12控制台执行：window.devProject()
+window.devProject = function (open = true) {
+  localStorage.setItem("project-debugger", open ? "1" : "0")
+}
+
+// 是否打印开发日志
+const hasWriteLog = localStorage.getItem("project-debugger") === "1"
+mars3d.Log.hasInfo(hasWriteLog)
+
+// 打印普通日志信息,方便开发调试
+export function logInfo(...sources) {
+  if (!hasWriteLog) {
+    return
+  }
+
+  // eslint-disable-next-line no-console
+  console.log("%c [Map页面调试]: %s", "padding: 2px 1px; border-radius: 3px 0 0 3px; color: #fff; background: rgba(107, 118, 178, 0.5);", ...sources)
+}
+
+// 打印警告日志信息,方便开发调试
+export function logWarn(...sources) {
+  if (!hasWriteLog) {
+    return
+  }
+
+  // eslint-disable-next-line no-console
+  console.log(
+    "%c [Map页面警告]: %s",
+    "padding: 2px 1px; border-radius: 0 3px 3px 0; color: #fff; background: rgba(218, 62, 64, 0.6); font-weight: bold;",
+    ...sources
+  )
+}

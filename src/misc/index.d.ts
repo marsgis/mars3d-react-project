@@ -9,7 +9,6 @@ export { }
 declare global {
   interface Window {
     _mapInstance: Map // map地图对象
-    toolBarMenuData: any
 
     $alert: any
     $notify: any

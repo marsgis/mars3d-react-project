@@ -23,7 +23,6 @@ export default function (props) {
         // { name: "路线导航", icon: "connection", widget: "query-route" },
         // { name: "卷帘对比", icon: "switch-contrast", widget: "map-split" },
         // { name: "分屏对比", icon: "full-screen-play", widget: "map-compare" }
-        // { name: "百度街景", icon: h(City, { theme: "outline", size: "18" }), widget: "street-view" }
       ]
     }
   ]
@@ -50,7 +49,7 @@ export default function (props) {
                 items: item.children.map((child) => ({
                   key: child.widget,
                   label: (
-                    <div title={child.title || child.name} onClick={() => showWidget(child.widget)}>
+                    <div title={child.name} onClick={() => showWidget(child.widget)}>
                       <MarsIcon className={styles["toolbar-icon"]} icon={child.icon} width="18"></MarsIcon>
                       <span>{child.name}</span>
                     </div>

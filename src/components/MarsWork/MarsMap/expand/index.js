@@ -1,5 +1,5 @@
 // 注册mars3d插件
-// import "mars3d-space"
+import "mars3d-space"
 import "mars3d-heatmap"
 import "mars3d-echarts"
 import "mars3d-mapv"
@@ -13,6 +13,5 @@ import "./task/PointRotate.js"
 import "./task/RouteLine.js"
 import "./task/ZoomIn.js"
 import "./task/ZoomOut.js"
-import "./task/FlickerEntity.js"
 
 import "./graphic/CanvasBillboard.js"
