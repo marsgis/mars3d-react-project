@@ -58,7 +58,7 @@
     "typescript": "~5.2.2",
     "vite": "^6.0.6",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-mars3d": "^4.2.1"
+    "vite-plugin-mars3d": "^4.2.2"
   },
   "engines": {
     "node": ">=18.0.0",
