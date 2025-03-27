@@ -4,18 +4,27 @@
  * @author 火星渣渣灰 2022-01-10
  */
 import * as mars3d from "mars3d"
+
 const Cesium = mars3d.Cesium
 
 let map: mars3d.Map // 地图对象
 export let graphicLayer: mars3d.layer.GraphicLayer
-let queryPoi: mars3d.query.GaodePOI // GaodePOI查询
+let queryPoi: mars3d.query.QueryPOI // TdtPOI查询
 let address: any = null
+let queryAddressDOM
 
 // 初始化当前业务
 export function onMounted(mapInstance: mars3d.Map): void {
   map = mapInstance // 记录map
 
-  queryPoi = new mars3d.query.GaodePOI({
+  // 下侧状态栏提示
+  const locationBar = map.control.locationBar?.container
+  if (locationBar) {
+    queryAddressDOM = mars3d.DomUtil.create("div", "mars3d-locationbar-content mars3d-locationbar-autohide", map.control.locationBar.container)
+    queryAddressDOM.style.marginRight = "50px"
+  }
+
+  queryPoi = new mars3d.query.QueryPOI({
     // city: '合肥市',
   })
 
@@ -29,17 +38,29 @@ export function onMounted(mapInstance: mars3d.Map): void {
   map.on(mars3d.EventType.cameraChanged, cameraChanged)
 }
 
-function cameraChanged() {
-  queryPoi.getAddress({
-    location: map.getCenter(),
-    success: (result: any) => {
-      address = result
+async function cameraChanged() {
+  const radius = map.camera.positionCartographic.height // 单位：米
+  if (radius > 100000) {
+    address = null
+    if (queryAddressDOM) {
+      queryAddressDOM.innerHTML = ""
     }
+    return
+  }
+
+  address = await queryPoi.getAddress({
+    location: map.getCenter()
   })
+  if (address && queryAddressDOM) {
+    queryAddressDOM.innerHTML = "地址：" + address.address
+  }
 }
 
 // 释放当前业务
 export function onUnmounted(): void {
+  if (!map) {
+    return
+  }
   map.removeLayer(graphicLayer)
   map.off(mars3d.EventType.cameraChanged, cameraChanged)
   graphicLayer.remove()
@@ -49,30 +70,21 @@ export function onUnmounted(): void {
 }
 
 // 查询数据
-export function queryData(val: string): Promise<any> {
-  return new Promise((resolve) => {
-    queryPoi.autoTip({
-      text: val,
-      city: address?.city,
-      location: map.getCenter(),
-      success: (result: any) => {
-        resolve(result)
-      }
-    })
+export function queryData(val: string) {
+  return queryPoi.autoTip({
+    text: val,
+    extent: map.getExtent(),
+    city: address?.city
   })
 }
 
-export function querySiteList(text: string, page: number): Promise<any> {
-  return new Promise((resolve) => {
-    queryPoi.queryText({
-      text,
-      count: 6,
-      page: page - 1,
-      city: address?.city,
-      success: (result: any) => {
-        resolve(result)
-      }
-    })
+export function querySiteList(text: string, page: number) {
+  return queryPoi.queryText({
+    text,
+    count: 6,
+    page: page - 1,
+    extent: map.getExtent(),
+    city: address?.city
   })
 }
 

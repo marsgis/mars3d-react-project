@@ -22,10 +22,6 @@ export default function (props) {
   const [siteListShow, setSiteListShow] = useState(false)
 
   useEffect(() => {
-    if (searchTxt === "") {
-      setSearchListShow(false)
-    }
-
     // 绑定popup
     mapWork.graphicLayer.bindPopup(
       (event) => {
@@ -39,7 +35,7 @@ export default function (props) {
       },
       { template: false }
     )
-  })
+  }, [])
 
   let timer = useRef<any>()
 
@@ -66,6 +62,10 @@ export default function (props) {
     setSiteListShow(false)
 
     const result = await mapWork.queryData(val)
+    if (!result) {
+      return
+    }
+
     const list: { value: string }[] = []
     result.list.forEach((item: any) => {
       if (list.every((l) => l.value !== item.name)) {
@@ -213,6 +213,7 @@ export default function (props) {
                       total={allCount}
                       pageSize={6}
                       simple={true}
+                      showSizeChanger={false}
                     />
                   </div>
                 </>
