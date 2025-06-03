@@ -1,10 +1,7 @@
-import * as mapWork from "./map"
-import { useLifecycle } from "@mars/common/uses/useLifecycle"
 import styles from "./index.module.less"
 import image from "./img/heatmap.png"
 
 export default function (props) {
-  useLifecycle(mapWork)
 
   return (
     <div className={`${styles["layer-pictrue"]}`}>

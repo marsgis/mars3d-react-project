@@ -130,7 +130,7 @@ class LocationPoint extends Component<any, any> {
         {
           type: "input",
           field: "gk6X",
-          label: "纵坐标",
+          label: "横坐标",
           value: 39525622.7,
           show(data) {
             return data.type === "3"
@@ -142,7 +142,7 @@ class LocationPoint extends Component<any, any> {
         {
           type: "input",
           field: "gk6Y",
-          label: "横坐标",
+          label: "纵坐标",
           value: 3521371.9,
           show(data) {
             return data.type === "3"
